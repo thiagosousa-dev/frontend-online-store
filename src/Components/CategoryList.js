@@ -8,6 +8,7 @@ class CategoryList extends Component {
       <label htmlFor={ id } data-testid="category">
         { name }
         <input
+          name="Checked"
           id={ id }
           type="radio"
           value={ name }

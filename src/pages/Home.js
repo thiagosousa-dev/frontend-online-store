@@ -21,7 +21,6 @@ class Home extends React.Component {
     this.setState({
       resultCategory: result,
     });
-    console.log(result);
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -46,10 +45,6 @@ class Home extends React.Component {
         {resultCategory.map(({ id, name }) => (
           <CategoryList key={ id } id={ id } name={ name } />
         ))}
-        <input type="text" />
-        <Link to="/cart" data-testid="shopping-cart-button">
-          <button type="button">Adicionar ao carrinho</button>
-        </Link>
 
         <input
           type="text"
@@ -64,6 +59,11 @@ class Home extends React.Component {
         >
           Search
         </button>
+
+        <Link to="/cart" data-testid="shopping-cart-button">
+          <button type="button">Adicionar ao carrinho</button>
+        </Link>
+
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>

@@ -6,9 +6,9 @@ class Card extends Component {
     const { title, price, image } = this.props;
     return (
       <div data-testid="product">
+        <p>{title}</p>
         <img src={ image } alt="imagem do produto" />
         <p>{price}</p>
-        <p>{title}</p>
       </div>
     );
   }

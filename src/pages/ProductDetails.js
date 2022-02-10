@@ -32,7 +32,11 @@ class ProductDetails extends React.Component {
 }
 
 ProductDetails.propTypes = {
-  match: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default ProductDetails;

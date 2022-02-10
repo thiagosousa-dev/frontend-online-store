@@ -43,7 +43,6 @@ class Home extends React.Component {
       results: value,
       isLength: true,
     });
-    console.log('resultados:', results);
   }
 
   render() {

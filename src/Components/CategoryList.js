@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class CategoryList extends Component {
   render() {
-    const { id, name } = this.props;
+    const { id, name, handleClick } = this.props;
     return (
       <label htmlFor={ id } data-testid="category">
         { name }
@@ -12,6 +12,7 @@ class CategoryList extends Component {
           id={ id }
           type="radio"
           value={ name }
+          onClick={ handleClick }
         />
       </label>
     );
@@ -21,6 +22,7 @@ class CategoryList extends Component {
 CategoryList.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default CategoryList;

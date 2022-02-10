@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getCategories, getProductsFromAndQuery } from '../services/api';
+import * as api from '../services/api';
 import CategoryList from '../Components/CategoryList';
 import Card from '../Components/Card';
 
@@ -17,7 +17,7 @@ class Home extends React.Component {
   }
 
   getCategory = async () => {
-    const result = await getCategories();
+    const result = await api.getCategories();
     this.setState({
       resultCategory: result,
     });
@@ -29,11 +29,18 @@ class Home extends React.Component {
     });
   }
 
-  handleClick = async () => {
+  handleClick = async ({ target }) => {
+    let value;
     const { searchValue } = this.state;
-    const { results } = await getProductsFromAndQuery(searchValue);
+    const { results } = await api.getProductsFromAndQuery(searchValue);
+    const categoryResultById = await api.getProductsFromCategory(target.id);
+    if (target.type === 'button') {
+      value = results;
+    } else if (target.type === 'radio') {
+      value = categoryResultById;
+    }
     this.setState({
-      results,
+      results: value,
       isLength: true,
     });
   }
@@ -43,7 +50,12 @@ class Home extends React.Component {
     return (
       <div>
         {resultCategory.map(({ id, name }) => (
-          <CategoryList key={ id } id={ id } name={ name } />
+          <CategoryList
+            key={ id }
+            id={ id }
+            name={ name }
+            handleClick={ this.handleClick }
+          />
         ))}
 
         <input

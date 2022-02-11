@@ -106,8 +106,7 @@ class Home extends React.Component {
             { results.length > 0 ? (
               <div>
                 {results.map(({ id, title, price, thumbnail }) => (
-                  <Link
-                    data-testid="product-detail-link"
+                  <Card
                     key={ id }
                     id={ id }
                     title={ title }

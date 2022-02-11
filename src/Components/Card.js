@@ -5,7 +5,7 @@ import AddCartButton from './AddCartButton';
 
 class Card extends Component {
   render() {
-    const { id, title, price, image, addItemToCart } = this.props;
+    const { id, title, price, thumbnail, addItemToCart } = this.props;
     return (
 
       <div data-testid="product">
@@ -15,13 +15,13 @@ class Card extends Component {
           to={ `/productdetails/${id}` }
         >
 
-          <img src={ image } alt="imagem do produto" />
+          <img src={ thumbnail } alt="imagem do produto" />
           <p>{price}</p>
           <p>{title}</p>
         </Link>
         <AddCartButton
           id={ id }
-          addItemToCart={ () => addItemToCart({ id, title, price, image, qtd: 1 }) }
+          addItemToCart={ () => addItemToCart({ id, title, price, thumbnail, qtd: 1 }) }
         />
       </div>
     );
@@ -31,7 +31,7 @@ class Card extends Component {
 Card.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
-  image: PropTypes.string,
+  thumbnail: PropTypes.string,
   addItemToCart: PropTypes.func,
   id: PropTypes.string,
 };
@@ -39,7 +39,7 @@ Card.propTypes = {
 Card.defaultProps = {
   title: '',
   price: 0,
-  image: '',
+  thumbnail: '',
   addItemToCart: () => {},
   id: '',
 };

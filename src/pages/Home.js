@@ -111,7 +111,7 @@ class Home extends React.Component {
                     id={ id }
                     title={ title }
                     price={ price }
-                    image={ thumbnail }
+                    thumbnail={ thumbnail }
                     addItemToCart={ this.addItemToCart }
                   />
                 ))}

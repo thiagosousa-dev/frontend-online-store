@@ -5,16 +5,17 @@ class Cart extends React.Component {
   render() {
     const localStorageItems = localStorage.getItem('cartItems');
     const results = JSON.parse(localStorageItems);
+    console.log(results);
     return (
       results ? (
         <div>
-          {results.map(({ id, title, price, image, qtd }) => (
+          {results.map(({ id, title, price, thumbnail, qtd }) => (
             <ItemsCart
               key={ id }
               id={ id }
               title={ title }
               price={ price }
-              image={ image }
+              image={ thumbnail }
               itemCounter={ qtd }
             />
           ))}

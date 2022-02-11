@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
+// import Card from './Components/Card';
+import ProductDetails from './pages/ProductDetails';
 // import * as api from './services/api';
 import ProductDetails from './pages/ProductDetails';
 

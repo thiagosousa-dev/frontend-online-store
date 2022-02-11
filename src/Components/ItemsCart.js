@@ -7,9 +7,32 @@ class ItemsCart extends Component {
     return (
       <div>
         <p data-testid="shopping-cart-product-name">{title}</p>
+        <button
+          type="button"
+          // onClick={  }
+          name="increase"
+          data-testid="product-increase-quantity"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          // onClick={  }
+          name="decrease"
+          data-testid="product-decrease-quantity"
+        >
+          -
+        </button>
         <img src={ image } alt="imagem do produto" />
         <p>{price}</p>
         <p data-testid="shopping-cart-product-quantity">{ itemCounter }</p>
+        <button
+          type="button"
+          // onClick={  }
+          name="remove-item"
+        >
+          X
+        </button>
       </div>
     );
   }

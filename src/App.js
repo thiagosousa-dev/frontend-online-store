@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 // import Card from './Components/Card';
 import ProductDetails from './pages/ProductDetails';
+import ClosePurchase from './pages/ClosePurchase';
 // import * as api from './services/api';
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
             path="/productdetails/:id"
             render={ (props) => <ProductDetails { ...props } /> }
           />
+          <Route exact path="/closepurchase" component={ ClosePurchase } />
         </Switch>
       </BrowserRouter>
     );

@@ -73,7 +73,7 @@ class Home extends React.Component {
         </button>
 
         <Link to="/cart" data-testid="shopping-cart-button">
-          <button type="button">Adicionar ao carrinho</button>
+          <ion-icon name="cart-outline" />
         </Link>
 
         <p data-testid="home-initial-message">

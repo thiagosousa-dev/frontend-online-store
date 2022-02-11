@@ -6,7 +6,6 @@ import Cart from './pages/Cart';
 // import Card from './Components/Card';
 import ProductDetails from './pages/ProductDetails';
 // import * as api from './services/api';
-import ProductDetails from './pages/ProductDetails';
 
 class App extends React.Component {
   render() {

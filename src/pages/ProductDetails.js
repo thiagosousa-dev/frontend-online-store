@@ -1,0 +1,47 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import Card from '../Components/Card';
+import { getProductFromId } from '../services/api';
+import EvaluationForm from '../Components/EvaluationForm';
+
+class ProductDetails extends React.Component {
+  state= {
+    product: {},
+  }
+
+  async componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    const products = await getProductFromId(id);
+    this.setState({
+      product: products,
+    });
+  }
+
+  render() {
+    const { product } = this.state;
+    return (
+      <div>
+        <div data-testid="product-detail-name">
+          <Card
+            id={ product.id }
+            title={ product.title }
+            price={ product.price }
+            image={ product.thumbnail }
+          />
+        </div>
+        <EvaluationForm />
+
+      </div>
+    );
+  }
+}
+
+ProductDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
+
+export default ProductDetails;

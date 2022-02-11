@@ -10,6 +10,8 @@ class Home extends React.Component {
     searchValue: '',
     results: [],
     isLength: false,
+    listCart: [],
+    counterListCart: 0,
   }
 
   async componentDidMount() {
@@ -45,8 +47,23 @@ class Home extends React.Component {
     });
   }
 
+  addItemToCart = (productInfo) => {
+    this.setState((prevState) => ({
+      listCart: [...prevState.listCart, productInfo],
+      counterListCart: prevState.counterListCart + 1,
+    }), () => {
+      const { listCart } = this.state;
+      localStorage.setItem('cartItems', JSON.stringify(listCart));
+    });
+  }
+
   render() {
-    const { resultCategory, results, isLength } = this.state;
+    const { resultCategory,
+      results,
+      isLength,
+      counterListCart,
+      listCart,
+    } = this.state;
     return (
       <div>
         {resultCategory.map(({ id, name }) => (
@@ -72,9 +89,14 @@ class Home extends React.Component {
           Search
         </button>
 
-        <Link to="/cart" data-testid="shopping-cart-button">
-          <ion-icon name="cart-outline" />
+        <Link
+          to={ { pathname: '/cart', state: listCart } }
+          data-testid="shopping-cart-button"
+        >
+          <button type="button">Veja Seu carrinho</button>
         </Link>
+
+        <span>{counterListCart}</span>
 
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
@@ -86,9 +108,11 @@ class Home extends React.Component {
                 {results.map(({ id, title, price, thumbnail }) => (
                   <Card
                     key={ id }
+                    id={ id }
                     title={ title }
                     price={ price }
                     image={ thumbnail }
+                    addItemToCart={ this.addItemToCart }
                   />
                 ))}
               </div>

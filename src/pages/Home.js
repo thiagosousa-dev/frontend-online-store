@@ -48,13 +48,13 @@ class Home extends React.Component {
   }
 
   addItemToCart = (productInfo) => {
-    const prevState = this.state;
-    const listCart = [...prevState.listCart, productInfo];
-    this.setState((prev) => ({
-      listCart,
-      counterListCart: prev.counterListCart + 1,
-    }));
-    localStorage.setItem('cartItems', JSON.stringify(listCart));
+    this.setState((prevState) => ({
+      listCart: [...prevState.listCart, productInfo],
+      counterListCart: prevState.counterListCart + 1,
+    }), () => {
+      const { listCart } = this.state;
+      localStorage.setItem('cartItems', JSON.stringify(listCart));
+    });
   }
 
   render() {

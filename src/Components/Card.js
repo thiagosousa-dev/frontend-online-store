@@ -29,11 +29,19 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  addItemToCart: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  price: PropTypes.number,
+  image: PropTypes.string,
+  addItemToCart: PropTypes.func,
+  id: PropTypes.string,
+};
+
+Card.defaultProps = {
+  title: '',
+  price: 0,
+  image: '',
+  addItemToCart: () => {},
+  id: '',
 };
 
 export default Card;

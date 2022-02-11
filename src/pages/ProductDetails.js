@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Components/Card';
 import { getProductFromId } from '../services/api';
+import EvaluationForm from '../Components/EvaluationForm';
 
 class ProductDetails extends React.Component {
   state= {
@@ -19,13 +20,17 @@ class ProductDetails extends React.Component {
   render() {
     const { product } = this.state;
     return (
-      <div data-testid="product-detail-name">
-        <Card
-          id={ product.id }
-          title={ product.title }
-          price={ product.price }
-          image={ product.thumbnail }
-        />
+      <div>
+        <div data-testid="product-detail-name">
+          <Card
+            id={ product.id }
+            title={ product.title }
+            price={ product.price }
+            image={ product.thumbnail }
+          />
+        </div>
+        <EvaluationForm />
+
       </div>
     );
   }

@@ -9,26 +9,65 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    this.calculateTotalCartValue();
+    this.getProductsLocalStorage();
+  }
+
+  getProductsLocalStorage = () => {
+    const localStorageItems = localStorage.getItem('cartItems');
+    this.setState({
+      results: localStorageItems ? JSON.parse(localStorageItems) : [],
+    }, () => { this.calculateTotalCartValue(); });
   }
 
   calculateTotalCartValue = () => {
-    const localStorageItems = localStorage.getItem('cartItems');
-    this.setState({
-      results: JSON.parse(localStorageItems),
-    }, () => {
-      const { results } = this.state;
-      const totalCartValue = results.reduce((prev, { price }) => prev + price, 0);
-      this.setState({ totalCartValue });
-    });
+    const { results } = this.state;
+    const totalCartValue = results
+      .reduce((prev, { price, qtd }) => prev + price * qtd, 0);
+    this.setState({ totalCartValue });
   }
 
-  // const totalCartValue = results.reduce((prev, { price }) => prev + price, 0);
-  // localStorage.setItem('totalValueCart', JSON.stringify(totalCartValue));
+  addQtd = (productId) => {
+    const { results } = this.state;
+    const newList = results.map((item) => {
+      if (item.id === productId) {
+        item.qtd += 1;
+      }
+      return item;
+    });
+    this.setState({ results: newList },
+      () => {
+        localStorage.setItem('cartItems', JSON.stringify(results));
+        this.calculateTotalCartValue();
+      });
+  }
+
+  subQtd = (productId) => {
+    const { results } = this.state;
+    const newList = results.map((item) => {
+      if (item.id === productId && item.qtd > 1) {
+        item.qtd -= 1;
+      }
+      return item;
+    });
+    this.setState({ results: newList },
+      () => {
+        localStorage.setItem('cartItems', JSON.stringify(results));
+        this.calculateTotalCartValue();
+      });
+  }
+
+  removeProduct = (productId) => {
+    const { results } = this.state;
+    const newList = results.filter(({ id }) => id !== productId);
+    this.setState({ results: newList },
+      () => {
+        localStorage.setItem('cartItems', JSON.stringify(newList));
+        this.calculateTotalCartValue();
+      });
+  }
 
   render() {
     const { results, totalCartValue } = this.state;
-    console.log(results);
     return (
       <section>
         {results.length > 0 ? (
@@ -41,6 +80,9 @@ class Cart extends React.Component {
                 price={ price }
                 image={ image }
                 itemCounter={ qtd }
+                addQtd={ () => this.addQtd(id) }
+                subQtd={ () => this.subQtd(id) }
+                removeProduct={ () => this.removeProduct(id) }
               />
             ))}
             <h3>

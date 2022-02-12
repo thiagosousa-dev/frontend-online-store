@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 
 class ItemsCart extends Component {
   render() {
-    const { title, price, image, itemCounter } = this.props;
+    const {
+      title,
+      price,
+      image,
+      itemCounter,
+      addQtd,
+      subQtd,
+      removeProduct } = this.props;
     return (
       <div>
         <p data-testid="shopping-cart-product-name">{title}</p>
         <button
           type="button"
-          // onClick={  }
+          onClick={ addQtd }
           name="increase"
           data-testid="product-increase-quantity"
         >
@@ -17,7 +24,7 @@ class ItemsCart extends Component {
         </button>
         <button
           type="button"
-          // onClick={  }
+          onClick={ subQtd }
           name="decrease"
           data-testid="product-decrease-quantity"
         >
@@ -28,7 +35,7 @@ class ItemsCart extends Component {
         <p data-testid="shopping-cart-product-quantity">{ itemCounter }</p>
         <button
           type="button"
-          // onClick={  }
+          onClick={ removeProduct }
           name="remove-item"
         >
           X
@@ -43,6 +50,10 @@ ItemsCart.propTypes = {
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   itemCounter: PropTypes.number.isRequired,
+  addQtd: PropTypes.func.isRequired,
+  subQtd: PropTypes.func.isRequired,
+  removeProduct: PropTypes.func.isRequired,
+
 };
 
 export default ItemsCart;

@@ -47,7 +47,7 @@ class Home extends React.Component {
     });
   }
 
-  addItemToCart = (productInfo) => {
+  addNewProduct = (productInfo) => {
     this.setState((prevState) => ({
       listCart: [...prevState.listCart, productInfo],
       counterListCart: prevState.counterListCart + 1,
@@ -57,8 +57,36 @@ class Home extends React.Component {
     });
   }
 
+  incrementQTD = (list, productInfo) => {
+    const newList = list.map((item) => {
+      if (item.id === productInfo.id) {
+        item.qtd += 1;
+      }
+      return item;
+    });
+    this.setState((prevState) => ({
+      listCart: newList,
+      counterListCart: prevState.counterListCart + 1,
+    }),
+    () => {
+      localStorage.setItem('cartItems', JSON.stringify(newList));
+    });
+  }
+
+  addItemToCart = (productInfo) => {
+    const localStorageItems = localStorage.getItem('cartItems');
+    const list = localStorageItems ? JSON.parse(localStorageItems) : [];
+
+    if (list.some(({ id }) => id === productInfo.id)) {
+      this.incrementQTD(list, productInfo);
+    } else {
+      this.addNewProduct(productInfo);
+    }
+  }
+
   render() {
-    const { resultCategory,
+    const {
+      resultCategory,
       results,
       isLength,
       counterListCart,

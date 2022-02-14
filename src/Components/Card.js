@@ -6,18 +6,25 @@ import AddCartButton from './AddCartButton';
 class Card extends Component {
   render() {
     const { id, title, price, thumbnail, addItemToCart } = this.props;
+    const NUMBER_LENGTH = 40;
     return (
 
-      <div data-testid="product">
+      <div data-testid="product" className="card-product">
         <Link
           data-testid="product-detail-link"
           key={ id }
           to={ `/productdetails/${id}` }
+          className="Link-card"
         >
-
-          <img src={ thumbnail } alt="imagem do produto" />
-          <p>{price}</p>
-          <p>{title}</p>
+          <div className="card-image-wrapper">
+            <img src={ thumbnail } alt="imagem do produto" />
+          </div>
+          <p className="card-title">
+            {title.length > NUMBER_LENGTH ? `${title.slice(0, NUMBER_LENGTH)}...` : title}
+          </p>
+          <p className="card-price">
+            {price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          </p>
         </Link>
         <AddCartButton
           id={ id }

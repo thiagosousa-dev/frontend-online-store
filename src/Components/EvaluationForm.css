@@ -20,6 +20,7 @@ body {
 }
 
 .evaluation-container h3 {
+  color: rgb(102, 102, 102);
   margin-bottom: 1rem;
 }
 
@@ -54,8 +55,9 @@ body {
 }
 
 .btn-submit-evaluation {
-  background-color: rgb(167, 167, 167);
+  background-color: rgb(105, 194, 141);
   border: none;
+  color: white;
   cursor: pointer;
   height: 30px;
   width: 100px;
@@ -83,6 +85,7 @@ body {
 }
 
 .not-evaluation {
+  color: rgb(102, 102, 102);
   margin-top: 1rem;
   text-align: center;
 }

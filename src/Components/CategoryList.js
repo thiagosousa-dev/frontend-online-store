@@ -6,7 +6,6 @@ class CategoryList extends Component {
     const { id, name, handleClick } = this.props;
     return (
       <label htmlFor={ id } data-testid="category">
-        { name }
         <input
           name="Checked"
           id={ id }
@@ -14,6 +13,7 @@ class CategoryList extends Component {
           value={ name }
           onClick={ handleClick }
         />
+        { name }
       </label>
     );
   }

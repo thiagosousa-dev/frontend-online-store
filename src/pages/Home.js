@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 import CategoryList from '../Components/CategoryList';
 import Card from '../Components/Card';
+import './Home.css';
+import Header from '../Components/Hearder';
+import Footer from '../Components/Footer';
+import InputSearch from '../Components/InputSearch';
 
 class Home extends React.Component {
   state = {
@@ -76,7 +79,7 @@ class Home extends React.Component {
   addItemToCart = (productInfo) => {
     const localStorageItems = localStorage.getItem('cartItems');
     const list = localStorageItems ? JSON.parse(localStorageItems) : [];
-
+    this.setState({ listCart: list });
     if (list.some(({ id }) => id === productInfo.id)) {
       this.incrementQTD(list, productInfo);
     } else {
@@ -90,63 +93,54 @@ class Home extends React.Component {
       results,
       isLength,
       counterListCart,
-      listCart,
     } = this.state;
     return (
-      <div>
-        {resultCategory.map(({ id, name }) => (
-          <CategoryList
-            key={ id }
-            id={ id }
-            name={ name }
-            handleClick={ this.handleClick }
-          />
-        ))}
-
-        <input
-          type="text"
-          data-testid="query-input"
-          name="searchValue"
-          onChange={ this.handleChange }
+      <div className="home-container">
+        <Header
+          counterListCart={ counterListCart }
         />
-        <button
-          type="button"
-          data-testid="query-button"
-          onClick={ this.handleClick }
-        >
-          Search
-        </button>
-
-        <Link
-          to={ { pathname: '/cart', state: listCart } }
-          data-testid="shopping-cart-button"
-        >
-          <button type="button">Veja Seu carrinho</button>
-        </Link>
-
-        <span>{counterListCart}</span>
-
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        {isLength ? (
-          <div>
-            { results.length > 0 ? (
-              <div>
-                {results.map(({ id, title, price, thumbnail }) => (
-                  <Card
-                    key={ id }
-                    id={ id }
-                    title={ title }
-                    price={ price }
-                    thumbnail={ thumbnail }
-                    addItemToCart={ this.addItemToCart }
-                  />
-                ))}
-              </div>
-            ) : <p>Nenhum produto foi encontrado</p>}
+        <div className="home-main">
+          <div className="home-category">
+            <h3>Categorias</h3>
+            {resultCategory.map(({ id, name }) => (
+              <CategoryList
+                key={ id }
+                id={ id }
+                name={ name }
+                handleClick={ this.handleClick }
+              />
+            ))}
           </div>
-        ) : ''}
+          <div className="home-card-container">
+            <InputSearch
+              onChange={ this.handleChange }
+              onClick={ this.handleClick }
+            />
+            <p data-testid="home-initial-message" className="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </p>
+            {isLength ? (
+              <div>
+                { results.length > 0 ? (
+                  <div className="home-card-wrapper">
+                    {results.map(({ id, title, price, thumbnail }) => (
+                      <Card
+                        key={ id }
+                        id={ id }
+                        title={ title }
+                        price={ price }
+                        thumbnail={ thumbnail }
+                        addItemToCart={ this.addItemToCart }
+                      />
+                    ))}
+                  </div>
+                ) : <p>Nenhum produto foi encontrado</p>}
+              </div>
+            ) : ''}
+          </div>
+
+        </div>
+        <Footer />
       </div>
     );
   }

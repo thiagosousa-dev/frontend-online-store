@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ItemsCart from '../Components/ItemsCart';
+import Header from '../Components/Hearder';
+import Footer from '../Components/Footer';
+import './Cart.css';
 
 class Cart extends React.Component {
   state = {
@@ -69,39 +72,48 @@ class Cart extends React.Component {
   render() {
     const { results, totalCartValue } = this.state;
     return (
-      <section>
-        {results.length > 0 ? (
-          <div>
-            {results.map(({ id, title, price, image, qtd }) => (
+      <div className="page-cart">
+        <Header />
+        <div className="cart-container">
+          <h1>Meu carrinho</h1>
+          {results.length > 0 ? (
+            results.map(({ id, title, price, thumbnail, qtd }) => (
               <ItemsCart
                 key={ id }
                 id={ id }
                 title={ title }
                 price={ price }
-                image={ image }
+                image={ thumbnail }
                 itemCounter={ qtd }
                 addQtd={ () => this.addQtd(id) }
                 subQtd={ () => this.subQtd(id) }
                 removeProduct={ () => this.removeProduct(id) }
               />
-            ))}
-            <h3>
-              {`Valor total do Carrinho: R$ ${totalCartValue.toFixed(2)}`}
-            </h3>
-          </div>
-        ) : <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>}
-        <div>
+            ))
+          ) : (
+            <p
+              data-testid="shopping-cart-empty-message"
+              className="text-empty-cart"
+            >
+              Seu carrinho está vazio
+            </p>
+          )}
+          <h3>
+            {`Valor total: ${totalCartValue
+              .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
+          </h3>
           <Link to="./closepurchase">
             <button
               type="button"
               name="go-to-close-purchase"
+              className="btn-purchase"
             >
               Finalizar Compra
             </button>
           </Link>
         </div>
-
-      </section>
+        <Footer />
+      </div>
     );
   }
 }

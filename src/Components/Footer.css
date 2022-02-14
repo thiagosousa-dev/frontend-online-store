@@ -1,0 +1,20 @@
+.logo-footer {
+  align-items: center;
+  background-color: rgb(234, 234, 234);
+  color: white;
+  display: flex;
+  height: 10rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.logo-footer img {
+  width: 60px;
+}
+
+.logo-footer p {
+  color: rgb(105, 194, 141);
+  font-size: 2rem;
+  font-weight: 700;
+}
+

@@ -11,6 +11,7 @@ class AddCartButton extends Component {
           type="button"
           onClick={ addItemToCart }
           id={ id }
+          className="btn-add-cart"
         >
           Adicionar ao carrinho
         </button>

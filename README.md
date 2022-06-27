@@ -73,7 +73,7 @@ Agradeço às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQF2Uj6KcRDsNQ/profile-displayphoto-shrink_400_400/0/1634831412629?e=1657756800&v=beta&t=c2YvBLL7SB4ZZs46_EZuN_ESLwjI-CrKlASYdz2boWg"  width="100px;" alt="Foto do Steve Jobs"/><br>
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQF2Uj6KcRDsNQ/profile-displayphoto-shrink_400_400/0/1634831412629?e=1657756800&v=beta&t=c2YvBLL7SB4ZZs46_EZuN_ESLwjI-CrKlASYdz2boWg"  width="100px;" alt="Foto"/><br>
          <sub>
            <a href="https://www.linkedin.com/in/kesleymuniz/">Kesley Muniz</a>
         </sub>
@@ -81,7 +81,7 @@ Agradeço às seguintes pessoas que contribuíram para este projeto:
     </td>
      <td align="center">
       <a href="#">
-        <img src="https://media-exp1.licdn.com/dms/image/D5603AQEz_sjLIyo-Ag/profile-displayphoto-shrink_400_400/0/1639497152957?e=1657756800&v=beta&t=YA3y3J5JkLPUSXarBHaJTPwqcMVme0qdFrk81HP92fQ" width="100px;" alt="Foto do Steve Jobs"/><br>
+        <img src="https://media-exp1.licdn.com/dms/image/D5603AQEz_sjLIyo-Ag/profile-displayphoto-shrink_400_400/0/1639497152957?e=1657756800&v=beta&t=YA3y3J5JkLPUSXarBHaJTPwqcMVme0qdFrk81HP92fQ" width="100px;" alt="Foto"/><br>
          <sub>
           <a href="https://www.linkedin.com/in/carolcabralm/">Caroline Machado </a>
         </sub>
@@ -89,7 +89,7 @@ Agradeço às seguintes pessoas que contribuíram para este projeto:
     </td>
       <td align="center">
       <a href="#">
-        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQFX5mK1nvIa3A/profile-displayphoto-shrink_400_400/0/1576015558352?e=1657756800&v=beta&t=sIWgShvX-L26ImBJ1S5ffUB8LVi9gunheHlQ1WMTEMM" width="100px;" alt="Foto do Steve Jobs"/><br>
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQFX5mK1nvIa3A/profile-displayphoto-shrink_400_400/0/1576015558352?e=1657756800&v=beta&t=sIWgShvX-L26ImBJ1S5ffUB8LVi9gunheHlQ1WMTEMM" width="100px;" alt="Foto"/><br>
          <sub>
           <a href="https://www.linkedin.com/in/andreamorimtorres/">André Amorim</a>
         </sub>
